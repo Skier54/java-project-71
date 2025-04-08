@@ -16,14 +16,14 @@ import java.util.concurrent.Callable;
 
 public class App implements Callable<Integer> {
 
-    //@Parameters(index = "0", description = "The file whose checksum to calculate.")
-    //private File file;
+    @Parameters(index = "0", description = "path to first file")
+    private File filepath1;
 
-    //@Option(names = {"-h", "--help"}, description = "Show this help message and exit.")
-    //private boolean help;
+    @Parameters(index = "0", description = "path to second file")
+    private File filepath2;
 
-    //@Option(names = {"-V", "--version"}, description = "Print version information and exit.")
-    //private boolean version;
+    @Option(names = {"-f", "--format"}, description = "output format [default: stylish]")
+    private String format = "format";
 
     @Override
     public Integer call() throws Exception {
