@@ -1,7 +1,9 @@
 plugins {
     application
     id("com.github.ben-manes.versions") version "0.52.0"
+    id("org.sonarqube") version "6.1.0.5360"
     checkstyle
+    jacoco
 }
 
 group = "hexlet.code"
@@ -29,8 +31,13 @@ application {
 }
 tasks.test {
     useJUnitPlatform()
+    finalizedBy(tasks.jacocoTestReport)
 }
 
 tasks.getByName("run", JavaExec::class) {
     standardInput = System.`in`
+}
+
+tasks.jacocoTestReport {
+    dependsOn(tasks.test) // tests are required to run before generating the report
 }

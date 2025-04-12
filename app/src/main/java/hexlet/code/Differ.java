@@ -19,9 +19,11 @@ public class Differ {
         fileMapOneTwo.putAll(fileMapTwo);
 
         for (var key : fileMapOneTwo.keySet()) {
-            if (fileMapOne.containsKey(key) && fileMapTwo.containsKey(key) && Objects.equals(fileMapOne.get(key), fileMapTwo.get(key))) {
+            if (fileMapOne.containsKey(key) && fileMapTwo.containsKey(key)
+                    && Objects.equals(fileMapOne.get(key), fileMapTwo.get(key))) {
                 resultFile.add("\n  " + "  " + key + ": " + fileMapOne.get(key));
-            } else if (fileMapOne.containsKey(key) && fileMapTwo.containsKey(key) && !Objects.equals(fileMapOne.get(key), fileMapTwo.get(key))) {
+            } else if (fileMapOne.containsKey(key) && fileMapTwo.containsKey(key)
+                    && !Objects.equals(fileMapOne.get(key), fileMapTwo.get(key))) {
                 resultFile.add("\n  " + "- " + key + ": " + fileMapOne.get(key));
                 resultFile.add("\n  " + "+ " + key + ": " + fileMapTwo.get(key));
             } else if (fileMapOne.containsKey(key) && !fileMapTwo.containsKey(key)) {
