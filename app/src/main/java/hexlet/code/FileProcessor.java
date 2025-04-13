@@ -15,7 +15,7 @@ public class FileProcessor {
         return Paths.get("src", "test", "resources", "fixtures", fileName)
                 .toAbsolutePath().normalize();
     }
-    private static String readFixture(String filename) throws Exception {
+    static String readFixture(String filename) throws Exception {
         var path = getFixturePath(filename);
         return Files.readString(path).trim();
     }
