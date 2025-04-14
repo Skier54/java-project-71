@@ -17,4 +17,6 @@ jobs:
           fetch-depth: 0
           build-root-directory: app
       - name: Execute Gradle build
+        working-directory: app
         run: ./gradlew build
+
