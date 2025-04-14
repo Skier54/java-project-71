@@ -10,20 +10,28 @@ import org.junit.jupiter.api.Test;
 public class DifferTest {
 
     @Test
-    public void testGenerate() throws Exception {
+    public void testGenerateOne() throws Exception {
+        var expected = """
+                {
+                  + follow: false
+                  - host: hexlet.io
+                }""";
 
+        var actual = Differ.generate("fileTest1.json", "fileTest2.json");
+        assertEquals(expected, actual);
+    }
+
+    @Test
+    public void testGenerateTwo() throws Exception {
         var expected = """
                 {
                   - follow: false
-                    host: hexlet.io
+                  - host: hexlet.io
                   - proxy: 123.234.53.22
                   - timeout: 50
-                  + timeout: 20
-                  + verbose: true
                 }""";
-        //var filepath1 = readFixture("filepath1.ison");
-        //var filepath2 = readFixture("filepath2.ison");
-        var actual = Differ.generate("filepath1.ison", "filepath2.ison");
+
+        var actual = Differ.generate("fileTest3.json", "fileTest4.json");
         assertEquals(expected, actual);
     }
 }

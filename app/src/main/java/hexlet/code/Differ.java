@@ -29,11 +29,11 @@ public class Differ {
             } else if (fileMapOne.containsKey(key) && !fileMapTwo.containsKey(key)) {
                 resultFile.add("\n  " + "- " + key + ": " + fileMapOne.get(key));
             } else if (!fileMapOne.containsKey(key) && fileMapTwo.containsKey(key)) {
-                resultFile.add("\n  " + "+ " + key + ": " + fileMapTwo.get(key) + "\n");
+                resultFile.add("\n  " + "+ " + key + ": " + fileMapTwo.get(key));
             }
         }
         resultFile.addFirst("{");
-        resultFile.addLast("}");
+        resultFile.addLast("\n}");
         return String.join("", resultFile);
     }
 }

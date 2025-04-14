@@ -1,9 +1,11 @@
 plugins {
     application
     id("com.github.ben-manes.versions") version "0.52.0"
+    id("com.github.johnrengelman.shadow") version "8.1.1"
     id("org.sonarqube") version "6.1.0.5360"
     checkstyle
     jacoco
+    id("io.freefair.lombok") version "8.6"
 }
 
 group = "hexlet.code"
@@ -14,16 +16,19 @@ repositories {
 }
 
 dependencies {
-    testImplementation(platform("org.junit:junit-bom:5.12.0-M1"))
-    testImplementation("org.junit.jupiter:junit-jupiter")
     implementation("org.apache.commons:commons-lang3:3.17.0")
-    implementation("info.picocli:picocli:4.7.6")
     implementation("org.apache.commons:commons-collections4:4.4")
+    testImplementation(platform("org.junit:junit-bom:5.12.2"))
+    testImplementation("org.junit.jupiter:junit-jupiter")
+    testImplementation("org.junit.platform:junit-platform-launcher")
+    //testRuntimeOnly("org.junit.platform:junit-platform-launcher")
+    implementation("info.picocli:picocli:4.7.6")
     implementation("com.fasterxml.jackson.core:jackson-databind:2.17.2")
     implementation("com.fasterxml.jackson.core:jackson-core:2.15.2")
     implementation("com.fasterxml.jackson.core:jackson-annotations:2.15.2")
-    //annotationProcessor ("info.picocli:picocli-codegen:4.7.6")
+    annotationProcessor ("info.picocli:picocli-codegen:4.7.6")
     //compileOnly("org.projectlombok:lombok:1.18.24")
+    annotationProcessor("org.projectlombok:lombok:1.18.24")
 }
 
 application {
@@ -33,6 +38,7 @@ application {
 tasks.test {
     useJUnitPlatform()
     finalizedBy(tasks.jacocoTestReport)
+
 }
 
 tasks.getByName("run", JavaExec::class) {
@@ -41,4 +47,11 @@ tasks.getByName("run", JavaExec::class) {
 
 tasks.jacocoTestReport {
     dependsOn(tasks.test) // tests are required to run before generating the report
+}
+sonarqube {
+    properties {
+        property("sonar.projectKey", "hexlet-boilerplates_java-package")
+        property("sonar.organization", "hexlet-boilerplates")
+        property("sonar.host.url", "https://sonarcloud.io")
+    }
 }
