@@ -11,9 +11,10 @@ jobs:
         with:
           java-version: '23'
           distribution: 'temurin'
-      - name: Build with Gradle
-        uses: gradle/gradle-build-action@v4
+      - name: Setup Gradle
+        uses: gradle/actions/setup-gradle@v4
         with:
-          arguments: build
+          fetch-depth: 0
           build-root-directory: app
-
+      - name: Execute Gradle build
+        run: ./gradlew build
