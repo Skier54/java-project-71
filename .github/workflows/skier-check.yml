@@ -26,10 +26,3 @@ jobs:
         with:
           fetch-depth: 0
           gradle-root-directory: app
-      - name: Publish code coverage
-        uses: paambaati/codeclimate-action@v3.1.1
-        env:
-          CC_TEST_REPORTER_ID: ${{secrets.CC_TEST_REPORTER_ID}}
-          JACOCO_SOURCE_PATH: app/src/main/java
-          COVERAGE_COMMAND: make report
-          COVERAGE_LOCATIONS: ${{github.workspace}}/app/build/reports/jacoco/test/jacocoTestReport.xml:jacoco
