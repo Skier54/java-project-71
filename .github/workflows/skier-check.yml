@@ -26,14 +26,6 @@ jobs:
         with:
           fetch-depth: 0
           gradle-root-directory: app
-          
-      - name: Build with Gradle
-        working-directory: app
-        uses: gradle/gradle-build-action@v3
-        with:
-          arguments: build
-          gradle-root-directory: app
-          
       - name: Publish code coverage
         uses: paambaati/codeclimate-action@v3.1.1
         env:
