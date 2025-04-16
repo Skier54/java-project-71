@@ -7,3 +7,4 @@
 
 ### Examples of runnin
   * https://asciinema.org/a/NCm97AbCylgs8CqF3OXaoFqQU
+  * https://asciinema.org/a/xWxOlexemQvZXMYDplKmqbnbc
