@@ -14,7 +14,8 @@ build:
 	@./gradlew installDist
 
 report:
-	@./gradlew jacocoTestReport
+	make -C app report
+	#@./gradlew jacocoTestReport
 
 check:
 	@./gradlew checkstyleMain
