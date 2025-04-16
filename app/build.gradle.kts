@@ -51,8 +51,8 @@ tasks.jacocoTestReport {
 }
 sonarqube {
     properties {
-        property("sonar.projectKey", "hexlet-boilerplates_java-package")
-        property("sonar.organization", "hexlet-boilerplates")
-        property("sonar.host.url", "https://sonarcloud.io")
+        property ("sonar.projectKey", "your_project_key")
+        property ("sonar.host.url", "https://your-sonar-server")
+        property ("sonar.login", "your_token")
     }
 }
