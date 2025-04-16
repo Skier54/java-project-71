@@ -1,20 +1,22 @@
 .DEFAULT_GOAL := build-run
 
-run:
-	@./gradlew run
+help:
+	./build/install/app/bin/app -h
 
 run-dist:
 	@./build/install/app/bin/app filepath1.json filepath2.json
+
+start:
+	./gradlew run
 
 clean:
 	@./gradlew clean
 
 build:
-	@./gradlew clean
-	@./gradlew installDist
+	./gradlew build
 
 report:
-	@./gradlew jacocoTestReport
+	./gradlew jacocoTestReport
 
 check:
 	@./gradlew checkstyleMain
