@@ -10,23 +10,15 @@ jobs:
 
     steps:
       - uses: actions/checkout@v4
-      
-      - name: Set up JDK 23
-        uses: actions/setup-java@v4
+      - uses: actions/setup-java@v4
         with:
           java-version: '23'
           distribution: 'temurin'
-          
-      - name: Build with Gradle
-        run: |
-          cd app
-          ./gradlew build
-          
       - name: Publish code coverage
-        uses: paambaati/codeclimate-action@v3.0.0
+        uses: paambaati/codeclimate-action@v5.0.0
         env:
           CC_TEST_REPORTER_ID: ${{secrets.CC_TEST_REPORTER_ID}}
           JACOCO_SOURCE_PATH: app/src/main/java
         with:
           coverageCommand: make report
-          coverageLocations: ${{github.workspace}}/app/build/reports/jacoco/test/jacocoTestReport.xml:jacoco
+          coverageLocations: ${{github.workspace}}/app/build/reports/jacoco/test/jacocoTestReport.xml:jacoco{github.workspace}}/app/build/reports/jacoco/test/jacocoTestReport.xml:jacoco
