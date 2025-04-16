@@ -21,8 +21,8 @@ test:
 report:
 	make -C app report
 
-lint:
-	make -C app lint
+check:
+	make -C app check
 
 update-deps:
 	make -C app update-deps
