@@ -29,6 +29,7 @@ dependencies {
     annotationProcessor ("info.picocli:picocli-codegen:4.7.6")
     //compileOnly("org.projectlombok:lombok:1.18.24")
     annotationProcessor("org.projectlombok:lombok:1.18.24")
+    implementation("com.fasterxml.jackson.dataformat:jackson-dataformat-yaml:2.14.2")
 }
 
 application {

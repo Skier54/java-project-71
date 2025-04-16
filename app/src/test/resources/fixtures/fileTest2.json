@@ -1,3 +1,4 @@
 {
-  "follow": false
+  "follow": false,
+  "host": true
 }
