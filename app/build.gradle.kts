@@ -2,7 +2,7 @@ plugins {
     application
     id("com.github.ben-manes.versions") version "0.52.0"
     id("com.github.johnrengelman.shadow") version "8.1.1"
-    id("org.sonarqube") version "6.1.0.5360"
+    id("org.sonarqube") version "6.0.1.5171"
     checkstyle
     jacoco
     id("io.freefair.lombok") version "8.6"
@@ -49,10 +49,10 @@ tasks.getByName("run", JavaExec::class) {
 tasks.jacocoTestReport {
     dependsOn(tasks.test) // tests are required to run before generating the report
 }
-sonarqube {
-    properties {
-        property ("sonar.projectKey", "Skier54_java-project-71")
-        property ("sonar.host.url", "https://sonarcloud.io")
-        property ("sonar.login", "Skier54")
-    }
+sonar {
+  properties {
+    property("sonar.projectKey", "Skier54_java-project-71")
+    property("sonar.organization", "skier54")
+    property("sonar.host.url", "https://sonarcloud.io")
+  }
 }
