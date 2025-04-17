@@ -51,8 +51,8 @@ tasks.jacocoTestReport {
 }
 sonarqube {
     properties {
-        property ("sonar.projectKey", "your_project_key")
-        property ("sonar.host.url", "https://your-sonar-server")
-        property ("sonar.login", "your_token")
+        property ("sonar.projectKey", "Skier54_java-project-71")
+        property ("sonar.host.url", "https://sonarcloud.io")
+        property ("sonar.login", "Skier54")
     }
 }
