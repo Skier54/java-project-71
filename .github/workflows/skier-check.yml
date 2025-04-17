@@ -47,7 +47,7 @@ jobs:
         working-directory: app
         env:
           SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
-        run: ./gradlew sonar --info
+        run: ./gradlew build sonar --info
         
       - name: Publish code coverage
         uses: paambaati/codeclimate-action@v9.0.0
