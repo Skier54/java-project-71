@@ -46,9 +46,8 @@ tasks.getByName("run", JavaExec::class) {
     standardInput = System.`in`
 }
 
-tasks.jacocoTestReport {
-    dependsOn(tasks.test) // tests are required to run before generating the report
-}
+tasks.jacocoTestReport { reports { xml.required.set(true) } }
+
 sonar {
   properties {
     property("sonar.projectKey", "Skier54_java-project-71")
