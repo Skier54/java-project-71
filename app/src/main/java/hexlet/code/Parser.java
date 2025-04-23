@@ -9,7 +9,7 @@ import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.util.Map;
 
-public class FileProcessor {
+public class Parser {
 
     private static Path getFixturePath(String fileName) {
         return Paths.get("src", "test", "resources", "fixtures", fileName)

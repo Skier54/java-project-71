@@ -1,12 +1,14 @@
 package hexlet.code;
 
-import java.util.List;
-import java.util.LinkedList;
+import java.util.LinkedHashMap;
 import java.util.Map;
 import java.util.Objects;
 import java.util.TreeMap;
+import java.util.Arrays;
+import java.util.List;
 
-import static hexlet.code.FileProcessor.getData;
+import static hexlet.code.Parser.getData;
+import static hexlet.code.Stylish.formatter;
 
 public class Differ {
 
@@ -14,26 +16,28 @@ public class Differ {
         Map<String, Object> fileMapOne = getData(fileNameOne);
         Map<String, Object> fileMapTwo = getData(fileNameTwo);
         Map<String, Object> fileMapOneTwo = new TreeMap<>(fileMapOne);
-        List<String> resultFile = new LinkedList<>();
 
         fileMapOneTwo.putAll(fileMapTwo);
 
+        Map<String, List<Object>> diffMap = new LinkedHashMap<>();
+
         for (var key : fileMapOneTwo.keySet()) {
+            var value1 = fileMapOne.get(key);
+            var value2 = fileMapTwo.get(key);
+
             if (fileMapOne.containsKey(key) && fileMapTwo.containsKey(key)
-                    && Objects.equals(fileMapOne.get(key), fileMapTwo.get(key))) {
-                resultFile.add("\n  " + "  " + key + ": " + fileMapOne.get(key));
+                    && Objects.equals(value1, value2)) {
+                diffMap.put(key, Arrays.asList("unchanged", value1, value2));
             } else if (fileMapOne.containsKey(key) && fileMapTwo.containsKey(key)
-                    && !Objects.equals(fileMapOne.get(key), fileMapTwo.get(key))) {
-                resultFile.add("\n  " + "- " + key + ": " + fileMapOne.get(key));
-                resultFile.add("\n  " + "+ " + key + ": " + fileMapTwo.get(key));
+                    && !Objects.equals(value1, value2)) {
+                diffMap.put(key, Arrays.asList("changed", value1, value2));
             } else if (fileMapOne.containsKey(key) && !fileMapTwo.containsKey(key)) {
-                resultFile.add("\n  " + "- " + key + ": " + fileMapOne.get(key));
+                diffMap.put(key, Arrays.asList("deleted", value1, null));
             } else if (!fileMapOne.containsKey(key) && fileMapTwo.containsKey(key)) {
-                resultFile.add("\n  " + "+ " + key + ": " + fileMapTwo.get(key));
+                diffMap.put(key, Arrays.asList("added", null, value2));
             }
         }
-        resultFile.addFirst("{");
-        resultFile.addLast("\n}");
-        return String.join("", resultFile);
+        return formatter(diffMap);
     }
 }
+

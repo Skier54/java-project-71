@@ -18,8 +18,9 @@ public class App implements Callable<Integer> {
     @Parameters(index = "1", description = "path to second file", paramLabel = "filepath2")
     private String filepath2;
 
-    @Option(names = {"-f", "--format"}, description = "output format [default: stylish]", paramLabel = "format")
-    private String format = "format";
+    @Option(names = {"-f", "--format"}, description = "output format [default: stylish]",
+            defaultValue = "stylish", paramLabel = "format")
+    private String format;
 
     @Override
     public Integer call() throws Exception {
@@ -29,7 +30,6 @@ public class App implements Callable<Integer> {
     }
 
     public static void main(String[] args) {
-        //System.out.println("Hello World!");
         int exitCode = new CommandLine(new App()).execute(args);
         System.exit(exitCode);
     }

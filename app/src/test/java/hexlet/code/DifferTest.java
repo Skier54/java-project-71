@@ -1,10 +1,6 @@
 package hexlet.code;
 
-//import static org.junit.Assert.assertEquals;
-//import static junit.framework.TestCase.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertEquals;
-
-//import org.junit.Test;
 import org.junit.jupiter.api.Test;
 
 public class DifferTest {
@@ -13,10 +9,19 @@ public class DifferTest {
     public void testGenerateOne() throws Exception {
         var expected = """
                 {
-                  - follow: 50
-                  + follow: false
-                  - host: hexlet.io
-                  + host: true
+                  - id: 45
+                  + id: null
+                  - key1: value1
+                  + key2: value2
+                    numbers1: [1, 2, 3, 4]
+                  - numbers2: [2, 3, 4, 5]
+                  + numbers2: [22, 33, 44, 55]
+                  - setting1: Some value
+                  + setting1: Another value
+                  - setting2: 200
+                  + setting2: 300
+                  - setting3: true
+                  + setting3: none
                 }""";
 
         var actual = Differ.generate("fileTest1.json", "fileTest2.json");
@@ -27,10 +32,18 @@ public class DifferTest {
     public void testGenerateTwo() throws Exception {
         var expected = """
                 {
-                  - follow: false
-                  - host: hexlet.io
-                  - proxy: 123.234.53.22
-                  - timeout: 50
+                  - chars1: [a, b, c]
+                  - chars2: [d, e, f]
+                  - checked: false
+                  - default: null
+                  - id: 45
+                  - key1: value1
+                  - numbers1: [1, 2, 3, 4]
+                  - numbers2: [2, 3, 4, 5]
+                  - numbers3: [3, 4, 5]
+                  - setting1: Some value
+                  - setting2: 200
+                  - setting3: true
                 }""";
 
         var actual = Differ.generate("fileTest3.json", "fileTest4.json");
@@ -51,15 +64,32 @@ public class DifferTest {
     public void testGenerateFour() throws Exception {
         var expected = """
                 {
-                  - follow: false
-                    host: hexlet.io
-                  - proxy: 123.234.53.22
-                  - timeout: 50
-                  + timeout: 20
-                  + verbose: true
+                    chars1: [a, b, c]
+                  - chars2: [d, e, f]
+                  + chars2: false
+                  - checked: false
+                  + checked: true
+                  - default: null
+                  + default: [value1, value2]
+                  - id: 45
+                  + id: null
+                  - key1: value1
+                  + key2: value2
+                    numbers1: [1, 2, 3, 4]
+                  - numbers2: [2, 3, 4, 5]
+                  + numbers2: [22, 33, 44, 55]
+                  - numbers3: [3, 4, 5]
+                  + numbers4: [4, 5, 6]
+                  + obj1: {nestedKey=value, isNested=true}
+                  - setting1: Some value
+                  + setting1: Another value
+                  - setting2: 200
+                  + setting2: 300
+                  - setting3: true
+                  + setting3: none
                 }""";
 
-        var actual = Differ.generate("filepath1.yaml", "filepath2.yaml");
+        var actual = Differ.generate("filepath3.yaml", "filepath4.yaml");
         assertEquals(expected, actual);
     }
 
@@ -67,10 +97,19 @@ public class DifferTest {
     public void testGenerateSix() throws Exception {
         var expected = """
                 {
-                  - follow: 50
-                  + follow: false
-                  - host: hexlet.io
-                  + host: true
+                  - id: 45
+                  + id: null
+                  - key1: value1
+                  + key2: value2
+                    numbers1: [1, 2, 3, 4]
+                  - numbers2: [2, 3, 4, 5]
+                  + numbers2: [22, 33, 44, 55]
+                  - setting1: Some value
+                  + setting1: Another value
+                  - setting2: 200
+                  + setting2: 300
+                  - setting3: true
+                  + setting3: none
                 }""";
 
         var actual = Differ.generate("fileTest1.yaml", "fileTest2.yaml");
@@ -81,10 +120,18 @@ public class DifferTest {
     public void testGenerateSeven() throws Exception {
         var expected = """
                 {
-                  - follow: false
-                  - host: hexlet.io
-                  - proxy: 123.234.53.22
-                  - timeout: 50
+                  - chars1: [a, b, c]
+                  - chars2: [d, e, f]
+                  - checked: false
+                  - default: null
+                  - id: 45
+                  - key1: value1
+                  - numbers1: [1, 2, 3, 4]
+                  - numbers2: [2, 3, 4, 5]
+                  - numbers3: [3, 4, 5]
+                  - setting1: Some value
+                  - setting2: 200
+                  - setting3: true
                 }""";
 
         var actual = Differ.generate("fileTest3.yaml", "fileTest4.yaml");

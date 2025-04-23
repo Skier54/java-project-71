@@ -1,0 +1,12 @@
+{"version": 2, "width": 202, "height": 34, "timestamp": 1745419456, "env": {"SHELL": "/bin/bash", "TERM": "xterm-256color"}}
+[0.025095, "o", "\u001b[?2004h\u001b]0;skier@DESKTOP-06UPLS2: ~/java-project-71/app\u0007\u001b[01;32mskier@DESKTOP-06UPLS2\u001b[00m:\u001b[01;34m~/java-project-71/app\u001b[00m$ "]
+[1.642212, "o", "./build/install/app/bin/app filepath3.yaml filepath4.yaml"]
+[3.019222, "o", "\r\n\u001b[?2004l\r"]
+[3.32893, "o", "{\r\n    chars1: [a, b, c]\r\n  - chars2: [d, e, f]\r\n  + chars2: false\r\n  - checked: false\r\n  + checked: true\r\n  - default: null\r\n  + default: [value1, value2]\r\n  - id: 45\r\n  + id: null\r\n  - key1: value1\r\n  + key2: value2\r\n    numbers1: [1, 2, 3, 4]\r\n  - numbers2: [2, 3, 4, 5]\r\n  + numbers2: [22, 33, 44, 55]\r\n  - numbers3: [3, 4, 5]\r\n  + numbers4: [4, 5, 6]\r\n  + obj1: {nestedKey=value, isNested=true}\r\n  - setting1: Some value\r\n  + setting1: Another value\r\n  - setting2: 200\r\n  + setting2: 300\r\n  - setting3: true\r\n  + setting3: none\r\n}\r\n"]
+[3.345375, "o", "\u001b[?2004h\u001b]0;skier@DESKTOP-06UPLS2: ~/java-project-71/app\u0007\u001b[01;32mskier@DESKTOP-06UPLS2\u001b[00m:\u001b[01;34m~/java-project-71/app\u001b[00m$ "]
+[5.195475, "o", "e"]
+[5.786454, "o", "x"]
+[6.802879, "o", "i"]
+[7.058554, "o", "t"]
+[8.16353, "o", "\r\n"]
+[8.163845, "o", "\u001b[?2004l\rexit\r\n"]
