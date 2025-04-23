@@ -3,10 +3,10 @@ package hexlet.code;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import org.junit.jupiter.api.Test;
 
-public class DifferTest {
+class DifferTest {
 
     @Test
-    public void testGenerateOne() throws Exception {
+    void testGenerateOne() throws Exception {
         var expected = """
                 {
                   - id: 45
@@ -29,7 +29,7 @@ public class DifferTest {
     }
 
     @Test
-    public void testGenerateTwo() throws Exception {
+    void testGenerateTwo() throws Exception {
         var expected = """
                 {
                   - chars1: [a, b, c]
@@ -51,7 +51,7 @@ public class DifferTest {
     }
 
     @Test
-    public void testGenerateThree() throws Exception {
+    void testGenerateThree() throws Exception {
         var expected = """
                 {
                 }""";
@@ -61,7 +61,7 @@ public class DifferTest {
     }
 
     @Test
-    public void testGenerateFour() throws Exception {
+    void testGenerateFour() throws Exception {
         var expected = """
                 {
                     chars1: [a, b, c]
@@ -94,7 +94,7 @@ public class DifferTest {
     }
 
     @Test
-    public void testGenerateSix() throws Exception {
+    void testGenerateSix() throws Exception {
         var expected = """
                 {
                   - id: 45
@@ -117,7 +117,7 @@ public class DifferTest {
     }
 
     @Test
-    public void testGenerateSeven() throws Exception {
+    void testGenerateSeven() throws Exception {
         var expected = """
                 {
                   - chars1: [a, b, c]
@@ -139,7 +139,7 @@ public class DifferTest {
     }
 
     @Test
-    public void testGenerateEight() throws Exception {
+    void testGenerateEight() throws Exception {
         var expected = """
                 {
                 }""";
