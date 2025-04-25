@@ -1,0 +1,11 @@
+{"version": 2, "width": 202, "height": 19, "timestamp": 1745603325, "env": {"SHELL": "/bin/bash", "TERM": "xterm-256color"}}
+[0.025521, "o", "\u001b[?2004h\u001b]0;skier@DESKTOP-06UPLS2: ~/java-project-71/app\u0007\u001b[01;32mskier@DESKTOP-06UPLS2\u001b[00m:\u001b[01;34m~/java-project-71/app\u001b[00m$ "]
+[0.846501, "o", "./build/install/app/bin/app -f plain filepath3.yaml filepath4.yaml"]
+[2.670767, "o", "\r\n\u001b[?2004l\r"]
+[2.999215, "o", "\r\nProperty 'chars2' was updated. From [complex value] to false\r\nProperty 'checked' was updated. From false to true\r\nProperty 'default' was updated. From null to [complex value]\r\nProperty 'id' was updated. From 45 to null\r\nProperty 'key1' was removed\r\nProperty 'key2' was added with value: 'value2'\r\nProperty 'numbers2' was updated. From [complex value] to [complex value]\r\nProperty 'numbers3' was removed\r\nProperty 'numbers4' was added with value: [complex value]\r\nProperty 'obj1' was added with value: [complex value]\r\nProperty 'setting1' was updated. From 'Some value' to 'Another value'\r\nProperty 'setting2' was updated. From 200 to 300\r\nProperty 'setting3' was updated. From true to 'none'\r\n"]
+[3.014545, "o", "\u001b[?2004h\u001b]0;skier@DESKTOP-06UPLS2: ~/java-project-71/app\u0007\u001b[01;32mskier@DESKTOP-06UPLS2\u001b[00m:\u001b[01;34m~/java-project-71/app\u001b[00m$ "]
+[5.690719, "o", "e"]
+[6.505677, "o", "x"]
+[6.825852, "o", "i"]
+[7.601955, "o", "t"]
+[8.290407, "o", "\r\n\u001b[?2004l\rexit\r\n"]

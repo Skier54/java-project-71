@@ -8,11 +8,11 @@ import java.util.Arrays;
 import java.util.List;
 
 import static hexlet.code.Parser.getData;
-import static hexlet.code.Stylish.formatter;
+import static hexlet.code.formatters.Stylish.formatter;
 
 public class Differ {
 
-    static String generate(String fileNameOne, String fileNameTwo) throws Exception {
+    static String generate(String fileNameOne, String fileNameTwo, String formatName) throws Exception {
         Map<String, Object> fileMapOne = getData(fileNameOne);
         Map<String, Object> fileMapTwo = getData(fileNameTwo);
         Map<String, Object> fileMapOneTwo = new TreeMap<>(fileMapOne);
@@ -37,7 +37,7 @@ public class Differ {
                 diffMap.put(key, Arrays.asList("added", null, value2));
             }
         }
-        return formatter(diffMap);
+        return Formatter.formatSelection(diffMap, formatName);
     }
 }
 

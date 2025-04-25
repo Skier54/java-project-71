@@ -24,7 +24,7 @@ class DifferTest {
                   + setting3: none
                 }""";
 
-        var actual = Differ.generate("fileTest1.json", "fileTest2.json");
+        var actual = Differ.generate("fileTest1.json", "fileTest2.json", "stylish");
         assertEquals(expected, actual);
     }
 
@@ -46,7 +46,7 @@ class DifferTest {
                   - setting3: true
                 }""";
 
-        var actual = Differ.generate("fileTest3.json", "fileTest4.json");
+        var actual = Differ.generate("fileTest3.json", "fileTest4.json", "stylish");
         assertEquals(expected, actual);
     }
 
@@ -56,7 +56,7 @@ class DifferTest {
                 {
                 }""";
 
-        var actual = Differ.generate("fileTest4.json", "fileTest4.json");
+        var actual = Differ.generate("fileTest4.json", "fileTest4.json", "stylish");
         assertEquals(expected, actual);
     }
 
@@ -89,7 +89,7 @@ class DifferTest {
                   + setting3: none
                 }""";
 
-        var actual = Differ.generate("filepath3.yaml", "filepath4.yaml");
+        var actual = Differ.generate("filepath3.yaml", "filepath4.yaml", "stylish");
         assertEquals(expected, actual);
     }
 
@@ -112,7 +112,7 @@ class DifferTest {
                   + setting3: none
                 }""";
 
-        var actual = Differ.generate("fileTest1.yaml", "fileTest2.yaml");
+        var actual = Differ.generate("fileTest1.yaml", "fileTest2.yaml", "stylish");
         assertEquals(expected, actual);
     }
 
@@ -134,7 +134,7 @@ class DifferTest {
                   - setting3: true
                 }""";
 
-        var actual = Differ.generate("fileTest3.yaml", "fileTest4.yaml");
+        var actual = Differ.generate("fileTest3.yaml", "fileTest4.yaml", "stylish");
         assertEquals(expected, actual);
     }
 
@@ -144,7 +144,59 @@ class DifferTest {
                 {
                 }""";
 
-        var actual = Differ.generate("fileTest4.yaml", "fileTest4.yaml");
+        var actual = Differ.generate("fileTest4.yaml", "fileTest4.yaml", "stylish");
+        assertEquals(expected, actual);
+    }
+
+    @Test
+    void testGeneratePlainOne() throws Exception {
+        var expected = """
+                
+                Property 'chars2' was updated. From [complex value] to false
+                Property 'checked' was updated. From false to true
+                Property 'default' was updated. From null to [complex value]
+                Property 'id' was updated. From 45 to null
+                Property 'key1' was removed
+                Property 'key2' was added with value: 'value2'
+                Property 'numbers2' was updated. From [complex value] to [complex value]
+                Property 'numbers3' was removed
+                Property 'numbers4' was added with value: [complex value]
+                Property 'obj1' was added with value: [complex value]
+                Property 'setting1' was updated. From 'Some value' to 'Another value'
+                Property 'setting2' was updated. From 200 to 300
+                Property 'setting3' was updated. From true to 'none'""";
+
+        var actual = Differ.generate("filepath3.yaml", "filepath4.yaml", "plain");
+        assertEquals(expected, actual);
+    }
+
+    @Test
+    void testGeneratePlainTwo() throws Exception {
+        var expected = """
+                
+                Property 'chars1' was removed
+                Property 'chars2' was removed
+                Property 'checked' was removed
+                Property 'default' was removed
+                Property 'id' was removed
+                Property 'key1' was removed
+                Property 'numbers1' was removed
+                Property 'numbers2' was removed
+                Property 'numbers3' was removed
+                Property 'setting1' was removed
+                Property 'setting2' was removed
+                Property 'setting3' was removed""";
+
+        var actual = Differ.generate("fileTest3.yaml", "fileTest4.yaml", "plain");
+        assertEquals(expected, actual);
+    }
+
+    @Test
+    void testGeneratePlainThree() throws Exception {
+        var expected = """
+                """;
+
+        var actual = Differ.generate("fileTest4.yaml", "fileTest4.yaml", "plain");
         assertEquals(expected, actual);
     }
 }

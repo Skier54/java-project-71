@@ -1,4 +1,4 @@
-package hexlet.code;
+package hexlet.code.formatters;
 
 import java.util.LinkedList;
 import java.util.List;
@@ -17,17 +17,17 @@ public class Stylish {
             var value2 = values.get(2);
 
             switch (status) {
-                case ("unchanged") :
+                case "unchanged" :
                     resultFile.add("\n  " + "  " + key + ": " + value1);
                     break;
-                case ("changed") :
+                case "changed" :
                     resultFile.add("\n  " + "- " + key + ": " + value1);
                     resultFile.add("\n  " + "+ " + key + ": " + value2);
                     break;
-                case ("deleted"):
+                case "deleted" :
                     resultFile.add("\n  " + "- " + key + ": " + value1);
                     break;
-                case ("added") :
+                case "added" :
                     resultFile.add("\n  " + "+ " + key + ": " + value2);
                     break;
                 default :
