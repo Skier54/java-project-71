@@ -151,7 +151,7 @@ class DifferTest {
     @Test
     void testGeneratePlainOne() throws Exception {
         var expected = """
-                
+
                 Property 'chars2' was updated. From [complex value] to false
                 Property 'checked' was updated. From false to true
                 Property 'default' was updated. From null to [complex value]
@@ -173,7 +173,7 @@ class DifferTest {
     @Test
     void testGeneratePlainTwo() throws Exception {
         var expected = """
-                
+
                 Property 'chars1' was removed
                 Property 'chars2' was removed
                 Property 'checked' was removed

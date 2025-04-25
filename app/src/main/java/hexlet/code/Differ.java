@@ -8,7 +8,6 @@ import java.util.Arrays;
 import java.util.List;
 
 import static hexlet.code.Parser.getData;
-import static hexlet.code.formatters.Stylish.formatter;
 
 public class Differ {
 
