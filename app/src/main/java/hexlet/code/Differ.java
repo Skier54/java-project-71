@@ -38,5 +38,9 @@ public class Differ {
         }
         return Formatter.formatSelection(diffMap, formatName);
     }
+
+    public static String generate(String fileNameOne, String fileNameTwo) throws Exception {
+        return generate(fileNameOne, fileNameTwo, "stylish");
+    }
 }
 
