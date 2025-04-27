@@ -30,5 +30,4 @@ public class Parser {
         String json = readFixture(filename);
         return objectMapper.readValue(json, new TypeReference<>() { });
     }
-
 }

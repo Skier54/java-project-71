@@ -13,16 +13,16 @@ public class Plain {
             var key = keys.getKey();
             var values = keys.getValue();
             var status = (String) values.get(0);
-            var value1 = getValue(values.get(1));
-            var value2 = getValue(values.get(2));
+            var valueOld = getValue(values.get(1));
+            var valueNew = getValue(values.get(2));
 
             switch (status) {
                 case "changed" ->
-                        resultFile.add("\nProperty '" + key + "' was updated. From " + value1 + " to " + value2);
+                        resultFile.add("\nProperty '" + key + "' was updated. From " + valueOld + " to " + valueNew);
                 case "deleted" ->
                         resultFile.add("\nProperty '" + key + "' was removed");
                 case "added" ->
-                        resultFile.add("\nProperty '" + key + "' was added with value: " + value2);
+                        resultFile.add("\nProperty '" + key + "' was added with value: " + valueNew);
                 default -> {
 
                 }

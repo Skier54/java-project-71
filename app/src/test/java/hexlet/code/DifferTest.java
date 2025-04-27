@@ -199,4 +199,86 @@ class DifferTest {
         var actual = Differ.generate("fileTest4.yaml", "fileTest4.yaml", "plain");
         assertEquals(expected, actual);
     }
+
+    @Test
+    void testGenerateJsonOne() throws Exception {
+        var expected = """
+                {
+                  "chars1" : [ "a", "b", "c" ],
+                  "chars2" : {
+                    "-" : [ "d", "e", "f" ],
+                    "+" : false
+                  },
+                  "checked" : {
+                    "-" : false,
+                    "+" : true
+                  },
+                  "default" : {
+                    "-" : null,
+                    "+" : [ "value1", "value2" ]
+                  },
+                  "id" : {
+                    "-" : 45,
+                    "+" : null
+                  },
+                  "- key1" : "value1",
+                  "+ key2" : "value2",
+                  "numbers1" : [ 1, 2, 3, 4 ],
+                  "numbers2" : {
+                    "-" : [ 2, 3, 4, 5 ],
+                    "+" : [ 22, 33, 44, 55 ]
+                  },
+                  "- numbers3" : [ 3, 4, 5 ],
+                  "+ numbers4" : [ 4, 5, 6 ],
+                  "+ obj1" : {
+                    "nestedKey" : "value",
+                    "isNested" : true
+                  },
+                  "setting1" : {
+                    "-" : "Some value",
+                    "+" : "Another value"
+                  },
+                  "setting2" : {
+                    "-" : 200,
+                    "+" : 300
+                  },
+                  "setting3" : {
+                    "-" : true,
+                    "+" : "none"
+                  }
+                }""";
+
+        var actual = Differ.generate("filepath3.yaml", "filepath4.yaml", "json");
+        assertEquals(expected, actual);
+    }
+
+    @Test
+    void testGenerateJsonTwo() throws Exception {
+        var expected = """
+                {
+                  "- chars1" : [ "a", "b", "c" ],
+                  "- chars2" : [ "d", "e", "f" ],
+                  "- checked" : false,
+                  "- default" : null,
+                  "- id" : 45,
+                  "- key1" : "value1",
+                  "- numbers1" : [ 1, 2, 3, 4 ],
+                  "- numbers2" : [ 2, 3, 4, 5 ],
+                  "- numbers3" : [ 3, 4, 5 ],
+                  "- setting1" : "Some value",
+                  "- setting2" : 200,
+                  "- setting3" : true
+                }""";
+
+        var actual = Differ.generate("fileTest3.yaml", "fileTest4.yaml", "json");
+        assertEquals(expected, actual);
+    }
+
+    @Test
+    void testGenerateJsonThree() throws Exception {
+        var expected = "{ }";
+
+        var actual = Differ.generate("fileTest4.yaml", "fileTest4.yaml", "json");
+        assertEquals(expected, actual);
+    }
 }
