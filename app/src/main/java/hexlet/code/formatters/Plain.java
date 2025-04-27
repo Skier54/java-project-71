@@ -28,7 +28,7 @@ public class Plain {
                 }
             }
         }
-        return String.join("", resultFile);
+        return String.join("", resultFile).trim();
     }
 
     public static Object getValue(Object value) {
