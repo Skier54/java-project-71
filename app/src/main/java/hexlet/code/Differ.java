@@ -11,7 +11,7 @@ import static hexlet.code.Parser.getData;
 
 public class Differ {
 
-    static String generate(String fileNameOne, String fileNameTwo, String formatName) throws Exception {
+    public static String generate(String fileNameOne, String fileNameTwo, String formatName) throws Exception {
         Map<String, Object> fileMapOne = getData(fileNameOne);
         Map<String, Object> fileMapTwo = getData(fileNameTwo);
         Map<String, Object> fileMapOneTwo = new TreeMap<>(fileMapOne);
