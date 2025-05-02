@@ -36,19 +36,19 @@ class DifferTest {
 
     @ParameterizedTest
     @CsvSource({
-            "stylish, filepath3.json, filepath4.json, resultStylish.txt",
-            "stylish, filepath3.yaml, filepath4.yaml, resultStylish.txt",
-            "plain, filepath3.json, filepath4.json, resultPlain.txt",
-            "plain, filepath3.yaml, filepath4.yaml, resultPlain.txt",
-            "json, filepath3.json, filepath4.json, resultJson.json",
-            "json, filepath3.yaml, filepath4.yaml, resultJson.json",
-            " , filepath3.json, filepath4.json, resultStylish.txt",
-            " , filepath3.yaml, filepath4.yaml, resultStylish.txt",
-            "json, fileTest4.json, fileTest4.json, filepath1.json",
-            "json, fileTest4.yaml, fileTest4.yaml, filepath1.yaml",
-            "stylish, filepath3.json, filepath4.yaml, resultStylish.txt",
-            "plain, filepath3.json, filepath4.yaml, resultPlain.txt",
-            "json, filepath3.json, filepath4.yaml, resultJson.json"
+        "stylish, filepath3.json, filepath4.json, resultStylish.txt",
+        "stylish, filepath3.yaml, filepath4.yaml, resultStylish.txt",
+        "plain, filepath3.json, filepath4.json, resultPlain.txt",
+        "plain, filepath3.yaml, filepath4.yaml, resultPlain.txt",
+        "json, filepath3.json, filepath4.json, resultJson.json",
+        "json, filepath3.yaml, filepath4.yaml, resultJson.json",
+        " , filepath3.json, filepath4.json, resultStylish.txt",
+        " , filepath3.yaml, filepath4.yaml, resultStylish.txt",
+        "json, fileTest4.json, fileTest4.json, filepath1.json",
+        "json, fileTest4.yaml, fileTest4.yaml, filepath1.yaml",
+        "stylish, filepath3.json, filepath4.yaml, resultStylish.txt",
+        "plain, filepath3.json, filepath4.yaml, resultPlain.txt",
+        "json, filepath3.json, filepath4.yaml, resultJson.json"
     })
     void testGenerate(String format, String file1, String file2, String expectedFile) throws Exception {
         var expected = readFixture(expectedFile);
