@@ -1,39 +1,40 @@
 package hexlet.code.formatters;
 
-import java.util.LinkedList;
 import java.util.List;
 import java.util.Map;
 
 public class Stylish {
+    public static final int ELEMENT_STATUS = 0;
+    public static final int FIRST_VALUE = 1;
+    public static final int SECOND_VALUE = 2;
 
-    public static String formatter(Map<String, List<Object>> diffMap) {
-        List<String> resultFile = new LinkedList<>();
+    public static String formatterStylish(Map<String, List<Object>> diffMap) {
+        StringBuilder resultFile = new StringBuilder("{\n");
 
         for (var keys : diffMap.entrySet()) {
             var key = keys.getKey();
             var values = keys.getValue();
-            var status = (String) values.get(0);
-            var valueOld = values.get(1);
-            var valueNew = values.get(2);
+            var status = (String) values.get(ELEMENT_STATUS);
+            var valueOld = values.get(FIRST_VALUE);
+            var valueNew = values.get(SECOND_VALUE);
 
             switch (status) {
                 case "unchanged" ->
-                    resultFile.add("\n  " + "  " + key + ": " + valueOld);
+                    resultFile.append("    ").append(key).append(": ").append(valueOld).append("\n");
                 case "changed" -> {
-                    resultFile.add("\n  " + "- " + key + ": " + valueOld);
-                    resultFile.add("\n  " + "+ " + key + ": " + valueNew);
+                    resultFile.append("  - ").append(key).append(": ").append(valueOld).append("\n");
+                    resultFile.append("  + ").append(key).append(": ").append(valueNew).append("\n");
                 }
                 case "deleted" ->
-                    resultFile.add("\n  " + "- " + key + ": " + valueOld);
+                    resultFile.append("  - ").append(key).append(": ").append(valueOld).append("\n");
                 case "added" ->
-                    resultFile.add("\n  " + "+ " + key + ": " + valueNew);
+                    resultFile.append("  + ").append(key).append(": ").append(valueNew).append("\n");
                 default -> {
 
                 }
             }
         }
-        resultFile.addFirst("{");
-        resultFile.addLast("\n}");
-        return String.join("", resultFile);
+        resultFile.append("}");
+        return resultFile.toString();
     }
 }

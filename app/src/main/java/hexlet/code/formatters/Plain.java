@@ -5,16 +5,21 @@ import java.util.LinkedList;
 import java.util.List;
 import java.util.Map;
 
+import static hexlet.code.formatters.Stylish.ELEMENT_STATUS;
+import static hexlet.code.formatters.Stylish.SECOND_VALUE;
+import static hexlet.code.formatters.Stylish.FIRST_VALUE;
+
+
 public class Plain {
-    public static String formatter(Map<String, List<Object>> diffMap) {
+    public static String formatterPlain(Map<String, List<Object>> diffMap) {
         List<String> resultFile = new LinkedList<>();
 
         for (var keys : diffMap.entrySet()) {
             var key = keys.getKey();
             var values = keys.getValue();
-            var status = (String) values.get(0);
-            var valueOld = getValue(values.get(1));
-            var valueNew = getValue(values.get(2));
+            var status = (String) values.get(ELEMENT_STATUS);
+            var valueOld = getValue(values.get(FIRST_VALUE));
+            var valueNew = getValue(values.get(SECOND_VALUE));
 
             switch (status) {
                 case "changed" ->

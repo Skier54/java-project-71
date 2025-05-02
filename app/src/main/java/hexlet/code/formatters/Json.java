@@ -8,8 +8,13 @@ import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Map;
 
+import static hexlet.code.formatters.Stylish.ELEMENT_STATUS;
+import static hexlet.code.formatters.Stylish.FIRST_VALUE;
+import static hexlet.code.formatters.Stylish.SECOND_VALUE;
+
+
 public class Json {
-    public static String formatter(Map<String, List<Object>> diffMap) throws JsonProcessingException {
+    public static String formatterJson(Map<String, List<Object>> diffMap) throws JsonProcessingException {
         ObjectMapper objectMapper = new ObjectMapper()
             .enable(SerializationFeature.INDENT_OUTPUT);
 
@@ -18,9 +23,9 @@ public class Json {
         for (var keys : diffMap.entrySet()) {
             var key = keys.getKey();
             var values = keys.getValue();
-            var status = (String) values.get(0);
-            var valueOld = values.get(1);
-            var valueNew = values.get(2);
+            var status = (String) values.get(ELEMENT_STATUS);
+            var valueOld = values.get(FIRST_VALUE);
+            var valueNew = values.get(SECOND_VALUE);
 
             switch (status) {
                 case "unchanged" ->

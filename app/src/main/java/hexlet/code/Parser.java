@@ -6,6 +6,7 @@ import com.fasterxml.jackson.dataformat.yaml.YAMLFactory;
 
 import java.io.FileNotFoundException;
 import java.io.IOException;
+
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
@@ -23,6 +24,7 @@ public class Parser {
             return path.normalize();
         }
     }
+
     static String readFixture(String filename) throws IOException {
         var path = getFixturePath(filename);
 

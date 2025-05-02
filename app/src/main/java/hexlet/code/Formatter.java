@@ -9,10 +9,11 @@ import java.util.Map;
 
 public class Formatter {
     public static String formatSelection(Map<String, List<Object>> diffMap, String formatName) throws Exception {
+
         return switch (formatName) {
-            case "stylish" -> Stylish.formatter(diffMap);
-            case "plain" -> Plain.formatter(diffMap);
-            case "json" -> Json.formatter(diffMap);
+            case "stylish" -> Stylish.formatterStylish(diffMap);
+            case "plain" -> Plain.formatterPlain(diffMap);
+            case "json" -> Json.formatterJson(diffMap);
             default -> throw new Exception("Incorrect format: " + formatName);
         };
     }
