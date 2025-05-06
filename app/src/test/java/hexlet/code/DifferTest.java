@@ -11,15 +11,15 @@ import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
-import java.util.Objects;
 
 class DifferTest {
+    private static final String PATH_TO_FILE = "src/test/resources/fixtures";
 
     private static Path getFixturePath(String fileName) {
         Path path = Paths.get(fileName);
 
         if (!path.isAbsolute()) {
-            return Paths.get("src", "test", "resources", "fixtures", fileName)
+            return Paths.get(PATH_TO_FILE, fileName)
                     .toAbsolutePath().normalize();
         } else {
             return path.normalize();
@@ -42,8 +42,6 @@ class DifferTest {
         "plain, filepath3.yaml, filepath4.yaml, resultPlain.txt",
         "json, filepath3.json, filepath4.json, resultJson.json",
         "json, filepath3.yaml, filepath4.yaml, resultJson.json",
-        " , filepath3.json, filepath4.json, resultStylish.txt",
-        " , filepath3.yaml, filepath4.yaml, resultStylish.txt",
         "json, fileTest4.json, fileTest4.json, filepath1.json",
         "json, fileTest4.yaml, fileTest4.yaml, filepath1.yaml",
         "stylish, filepath3.json, filepath4.yaml, resultStylish.txt",
@@ -52,9 +50,19 @@ class DifferTest {
     })
     void testGenerate(String format, String file1, String file2, String expectedFile) throws Exception {
         var expected = readFixture(expectedFile);
-        var actual = Objects.isNull(format)
-                ? Differ.generate(file1, file2)
-                : Differ.generate(file1, file2, format);
+        var actual = Differ.generate(file1, file2, format);
+        assertEquals(expected, actual);
+    }
+
+    @ParameterizedTest
+    @CsvSource({
+        "filepath3.json, filepath4.json, resultStylish.txt",
+        "filepath3.yaml, filepath4.yaml, resultStylish.txt",
+        "filepath3.json, filepath4.yaml, resultStylish.txt",
+    })
+    void testGenerateNoFormat(String file1, String file2, String expectedFile) throws Exception {
+        var expected = readFixture(expectedFile);
+        var actual = Differ.generate(file1, file2);
         assertEquals(expected, actual);
     }
 }

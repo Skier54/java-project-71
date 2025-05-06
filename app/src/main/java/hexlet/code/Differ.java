@@ -1,41 +1,53 @@
 package hexlet.code;
 
-import java.util.LinkedHashMap;
+import java.io.FileNotFoundException;
+import java.io.IOException;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.nio.file.Paths;
 import java.util.Map;
-import java.util.Objects;
-import java.util.TreeMap;
-import java.util.Arrays;
-import java.util.List;
 
 import static hexlet.code.Parser.getData;
 
 public class Differ {
+    private static final String PATH_TO_FILE = "src/test/resources/fixtures";
+
+    private static Path getFixturePath(String fileName) {
+        Path path = Paths.get(fileName);
+
+        if (!path.isAbsolute()) {
+            return Paths.get(PATH_TO_FILE, fileName)
+                    .toAbsolutePath().normalize();
+        } else {
+            return path.normalize();
+        }
+    }
+
+    static String readFixture(String filename) throws IOException {
+        var path = getFixturePath(filename);
+
+        if (!Files.exists(path)) {
+            throw new FileNotFoundException("File not found: " + path);
+        }
+        return Files.readString(path).trim();
+    }
+
+    static String getFileExtension(String filename) {
+        return filename.substring(filename.lastIndexOf('.') + 1);
+    }
 
     public static String generate(String fileNameOne, String fileNameTwo, String formatName) throws Exception {
-        Map<String, Object> fileMapOne = getData(fileNameOne);
-        Map<String, Object> fileMapTwo = getData(fileNameTwo);
-        Map<String, Object> fileMapOneTwo = new TreeMap<>(fileMapOne);
+        String extensionOne = getFileExtension(fileNameOne);
+        String extensionTwo = getFileExtension(fileNameTwo);
 
-        fileMapOneTwo.putAll(fileMapTwo);
+        String jsonOne = readFixture(fileNameOne);
+        String jsonTwo = readFixture(fileNameTwo);
 
-        Map<String, List<Object>> diffMap = new LinkedHashMap<>();
+        Map<String, Object> fileMapOne = getData(jsonOne, extensionOne);
+        Map<String, Object> fileMapTwo = getData(jsonTwo, extensionTwo);
 
-        for (var key : fileMapOneTwo.keySet()) {
-            var value1 = fileMapOne.get(key);
-            var value2 = fileMapTwo.get(key);
+        var diffMap = Construction.building(fileMapOne, fileMapTwo);
 
-            if (fileMapOne.containsKey(key) && fileMapTwo.containsKey(key)
-                    && Objects.equals(value1, value2)) {
-                diffMap.put(key, Arrays.asList("unchanged", value1, value2));
-            } else if (fileMapOne.containsKey(key) && fileMapTwo.containsKey(key)
-                    && !Objects.equals(value1, value2)) {
-                diffMap.put(key, Arrays.asList("changed", value1, value2));
-            } else if (fileMapOne.containsKey(key) && !fileMapTwo.containsKey(key)) {
-                diffMap.put(key, Arrays.asList("deleted", value1, null));
-            } else if (!fileMapOne.containsKey(key) && fileMapTwo.containsKey(key)) {
-                diffMap.put(key, Arrays.asList("added", null, value2));
-            }
-        }
         return Formatter.formatSelection(diffMap, formatName);
     }
 
