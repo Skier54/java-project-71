@@ -8,29 +8,29 @@ import java.util.LinkedHashMap;
 import java.util.Arrays;
 
 public class Construction {
-    public static Map<String, List<Object>> building(Map<String, Object> fileMapOne, Map<String, Object> fileMapTwo) {
-        Map<String, Object> fileMapOneTwo = new TreeMap<>(fileMapOne);
+    public static Map<String, List<Object>> building(Map<String, Object> parsDataOne, Map<String, Object> parsDataTwo) {
+        Map<String, Object> parsedDataResult = new TreeMap<>(parsDataOne);
 
-        fileMapOneTwo.putAll(fileMapTwo);
+        parsedDataResult.putAll(parsDataTwo);
 
-        Map<String, List<Object>> diffMap = new LinkedHashMap<>();
+        Map<String, List<Object>> diffResult = new LinkedHashMap<>();
 
-        for (var key : fileMapOneTwo.keySet()) {
-            var value1 = fileMapOne.get(key);
-            var value2 = fileMapTwo.get(key);
+        for (var key : parsedDataResult.keySet()) {
+            var value1 = parsDataOne.get(key);
+            var value2 = parsDataTwo.get(key);
 
-            if (fileMapOne.containsKey(key) && fileMapTwo.containsKey(key)
+            if (parsDataOne.containsKey(key) && parsDataTwo.containsKey(key)
                     && Objects.equals(value1, value2)) {
-                diffMap.put(key, Arrays.asList("unchanged", value1, value2));
-            } else if (fileMapOne.containsKey(key) && fileMapTwo.containsKey(key)
+                diffResult.put(key, Arrays.asList("unchanged", value1, value2));
+            } else if (parsDataOne.containsKey(key) && parsDataTwo.containsKey(key)
                     && !Objects.equals(value1, value2)) {
-                diffMap.put(key, Arrays.asList("changed", value1, value2));
-            } else if (fileMapOne.containsKey(key) && !fileMapTwo.containsKey(key)) {
-                diffMap.put(key, Arrays.asList("deleted", value1, null));
-            } else if (!fileMapOne.containsKey(key) && fileMapTwo.containsKey(key)) {
-                diffMap.put(key, Arrays.asList("added", null, value2));
+                diffResult.put(key, Arrays.asList("changed", value1, value2));
+            } else if (parsDataOne.containsKey(key) && !parsDataTwo.containsKey(key)) {
+                diffResult.put(key, Arrays.asList("deleted", value1, null));
+            } else if (!parsDataOne.containsKey(key) && parsDataTwo.containsKey(key)) {
+                diffResult.put(key, Arrays.asList("added", null, value2));
             }
         }
-        return diffMap;
+        return diffResult;
     }
 }

@@ -40,15 +40,15 @@ public class Differ {
         String extensionOne = getFileExtension(fileNameOne);
         String extensionTwo = getFileExtension(fileNameTwo);
 
-        String jsonOne = readFixture(fileNameOne);
-        String jsonTwo = readFixture(fileNameTwo);
+        String dataFileOne = readFixture(fileNameOne);
+        String dataFileTwo = readFixture(fileNameTwo);
 
-        Map<String, Object> fileMapOne = getData(jsonOne, extensionOne);
-        Map<String, Object> fileMapTwo = getData(jsonTwo, extensionTwo);
+        Map<String, Object> parsedDataOne = getData(dataFileOne, extensionOne);
+        Map<String, Object> parsedDataTwo = getData(dataFileTwo, extensionTwo);
 
-        var diffMap = Construction.building(fileMapOne, fileMapTwo);
+        var diffResult = Construction.building(parsedDataOne, parsedDataTwo);
 
-        return Formatter.formatSelection(diffMap, formatName);
+        return Formatter.formatSelection(diffResult, formatName);
     }
 
     public static String generate(String fileNameOne, String fileNameTwo) throws Exception {

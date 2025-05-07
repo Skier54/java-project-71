@@ -13,10 +13,10 @@ import java.util.concurrent.Callable;
 public class App implements Callable<Integer> {
 
     @Parameters(index = "0", description = "path to first file", paramLabel = "filepath1")
-    private String filepath1;
+    private String filepathOne;
 
     @Parameters(index = "1", description = "path to second file", paramLabel = "filepath2")
-    private String filepath2;
+    private String filepathTwo;
 
     @Option(names = {"-f", "--format"}, description = "output format [default: stylish]",
             defaultValue = "stylish", paramLabel = "format")
@@ -24,7 +24,7 @@ public class App implements Callable<Integer> {
 
     @Override
     public final Integer call() throws Exception {
-        var diff = Differ.generate(filepath1, filepath2, formatName);
+        var diff = Differ.generate(filepathOne, filepathTwo, formatName);
         System.out.println(diff);
         return 0;
     }

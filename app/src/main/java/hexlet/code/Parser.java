@@ -9,9 +9,9 @@ import java.io.IOException;
 import java.util.Map;
 
 public class Parser {
-    public static Map<String, Object> getData(String json, String extension) throws IOException {
+    public static Map<String, Object> getData(String dataFile, String extension) throws IOException {
         ObjectMapper objectMapper = receivingObjectMapper(extension);
-        return objectMapper.readValue(json, new TypeReference<>() { });
+        return objectMapper.readValue(dataFile, new TypeReference<>() { });
     }
 
     static ObjectMapper receivingObjectMapper(String extension) {
